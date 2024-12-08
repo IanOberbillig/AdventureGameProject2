@@ -75,7 +75,7 @@ while not quit_status:
             if not user_input in ['1', '2', '3', '4', '5', '6']:
                 input('Invalid input')
                 
-            #Fights a monster
+            #Fight a monster
                 
             elif user_input == '1':
                 monster = gamefunctions.new_random_monster()
