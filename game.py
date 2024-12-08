@@ -70,7 +70,7 @@ while not quit_status:
             )
             user_input = input('Select an option: ')
             
-            #Handles invalid inputs
+            #Handle invalid inputs
             
             if not user_input in ['1', '2', '3', '4', '5', '6']:
                 input('Invalid input')

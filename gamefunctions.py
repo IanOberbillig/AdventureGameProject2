@@ -41,7 +41,7 @@ def purchase_item(itemPrice, startingMoney, quantity = 1):
     if canAfford >= quantity:
         quantity_purchased = quantity
         remainingMoney = startingMoney - itemPrice * quantity
-    # If they can't afford what they want they purchase as much as they can
+    # If player can't afford what they want they purchase as much as they can
     else:
         quantity_purchased = canAfford
         remainingMoney = startingMoney - itemPrice * canAfford
