@@ -1,0 +1,23 @@
+{
+    "name": "Felix",
+    "power": 35,
+    "max_hp": 150,
+    "current_hp": 150,
+    "gold": 4242,
+    "inventory": [
+        {
+            "name": "Leather Armour",
+            "type": "Armour",
+            "durability": 100,
+            "equipped": "Yes",
+            "health": 50
+        },
+        {
+            "name": "Axe",
+            "type": "Weapon",
+            "durability": 10,
+            "equipped": "Yes",
+            "power": 10
+        }
+    ]
+}

@@ -3,6 +3,7 @@
 # 12/08/24
 
 import gamefunctions
+import json
 
 
 #Main game loop
@@ -15,7 +16,7 @@ while not quit_status:
     axe = {
         'name':'Axe',
         'type':'Weapon',
-        'durability':10,
+        'durability':1,
         'equipped':'No',
         'power':10
         }
@@ -37,11 +38,31 @@ while not quit_status:
         }
 
     input('Welcome to a text based adventure (hit enter to continue)')
-
-    player['name'] = input('What is your name: ')
-    print('')
-    gamefunctions.print_welcome(player['name'])
-    input()
+    isload = ''
+    issave = ''
+    while isload != 'n':
+        
+        isload = input('Load save? (y or n): ')
+        if isload == 'y':
+            savefile = input('What is the name of your save file?: ')
+            try:
+                with open(f'{savefile}.json', 'r') as file:
+                    player = json.load(file)
+                    issave = 'y'
+                    isload = 'n'
+            except:
+                input(f'No save file with name: {savefile}')
+        elif isload == 'n':
+            pass
+        else:
+            print('Invalid Input')
+    
+    
+    if issave != 'y':
+        player['name'] = input('What is your name: ')
+        print('')
+        gamefunctions.print_welcome(player['name'])
+        input()
 
     #Adventure loop
     
@@ -119,8 +140,20 @@ while not quit_status:
             #Quits game
 
             elif user_input == '6':
-                adventure_status = False
-                quit_status = True
+                player_answer = ''
+                while player_answer != 'n':
+                    player_answer = input('Would you like to save? (y or n): ')
+                    if player_answer == 'y':
+                        gamefunctions.save(player)
+                        player_answer = 'n'
+                        adventure_status = False
+                        quit_status = True
+                    elif player_answer == 'n':
+                        adventure_status = False
+                        quit_status = True
+                    else:
+                        print('Invalid input')
+
 
 
         

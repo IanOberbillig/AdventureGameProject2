@@ -15,6 +15,7 @@ for more information."""
 #Ian Oberbillig
 #12/08/24
 import random
+import json
 
 def purchase_item(itemPrice, startingMoney, quantity = 1):
     '''
@@ -248,6 +249,18 @@ def fight_monster(player, monster):
             
         # Attack sequence
         if user_input == '1':
+            #Decrease weapon durability
+            for item in player["inventory"]:
+                if item["equipped"] == 'Yes':
+                    item["durability"] -= 1
+                    if item["durability"] == 0:
+                        print(f'{item["name"]} broke')
+                        try:
+                            player['power'] -= item['power']
+                        except:
+                            pass
+                        player['inventory'].remove(item)
+                        
             monster['health'] = monster['health'] - player['power']
             player['current_hp'] = player['current_hp'] - monster['power']
             
@@ -409,23 +422,36 @@ def check_inventory(inventory):
 
         else:
             return({})
+
+def save(player):
+    '''
+    Saves the game.
+    
+    Paramaters:
+        player(dict): Player information
+
+    Returns:
+        None
+    '''
+    
+    save_name = input('Name your save: ')
+    with open(f'{save_name}.json', 'w') as file:
+        json.dump(player, file, indent=4)  # Write the data to the file in JSON format
+
+    print(f'Game saved under name: {save_name}')
+
+
+    
             
 
         
         
-                
-    
-        
-    
-        
-
-
-
+            
 
     
     
 #Function Calls to demonstrate code functionality:
-#Note for Ian: use 'control 3' to comment out highlighted code blocks
+#Note for Ian: use 'control 3' to comment out highlighted code blocks 'control 4' to uncomment
 
 
 def test_functions():
@@ -512,7 +538,7 @@ def test_functions():
             }
 
     player = {
-    'name':'',
+    'name':'Barret',
     'power':25,
     'max_hp':100,
     'current_hp':100,
@@ -534,6 +560,12 @@ def test_functions():
 
     print("check_inventory(player['inventory'])")
     check_inventory(player['inventory'])
+
+    print('')
+    print('')
+    
+    print('save(player)')
+    save(player)
 
 if __name__ == '__main__':
     test_functions()

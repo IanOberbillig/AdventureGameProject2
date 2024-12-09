@@ -1,0 +1,23 @@
+{
+    "name": "ian",
+    "power": 25,
+    "max_hp": 100,
+    "current_hp": 100,
+    "gold": 20,
+    "inventory": [
+        {
+            "name": "Axe",
+            "type": "Weapon",
+            "durability": 10,
+            "equipped": "No",
+            "power": 10
+        },
+        {
+            "name": "Leather Armour",
+            "type": "Armour",
+            "durability": 100,
+            "equipped": "No",
+            "health": 50
+        }
+    ]
+}
