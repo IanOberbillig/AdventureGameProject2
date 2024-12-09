@@ -1,4 +1,4 @@
-#Front end graphics
+#Front End Graphics
 #Ian Oberbillig
 #12/08/24
 
